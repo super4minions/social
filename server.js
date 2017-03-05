@@ -1,7 +1,5 @@
 var http = require('http');
-var router = require('router.js'); 
-http.createServer(function (req,res) {
-
-}).listen(8080,function(){
+var mainhandler = require('./main.js');
+http.createServer(mainhandler).listen(8080,function(){
   console.log('sddfff');
 });
