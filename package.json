@@ -1,0 +1,26 @@
+{
+  "name": "social",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/super4minions/social.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/super4minions/social/issues"
+  },
+  "homepage": "https://github.com/super4minions/social#readme",
+
+  "devDependencies": {
+     "istanbul": "^0.4.5",
+     "nodemon": "^1.11.0",
+     "shot": "^3.4.0",
+     "tape": "^4.6.3"
+  }
+}
