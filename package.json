@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node tests/test.js",
+    "start": "node server.js",
+    "cov" : "./node_modules/.bin/istanbul cover tests/test.js"
   },
   "repository": {
     "type": "git",
@@ -16,11 +18,13 @@
     "url": "https://github.com/super4minions/social/issues"
   },
   "homepage": "https://github.com/super4minions/social#readme",
-
   "devDependencies": {
-     "istanbul": "^0.4.5",
-     "nodemon": "^1.11.0",
-     "shot": "^3.4.0",
-     "tape": "^4.6.3"
+    "istanbul": "^0.4.5",
+    "nodemon": "^1.11.0",
+    "shot": "^3.4.0",
+    "tape": "^4.6.3"
+  },
+  "dependencies": {
+    "codeclimate-test-reporter": "^0.4.1"
   }
 }
