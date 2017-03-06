@@ -31,7 +31,7 @@
   var http = new XMLHttpRequest();
   function newElement() {
     var inputValue = document.getElementById("myInput").value;
-    console.log(inputValue);
+    // console.log(inputValue);
             if (inputValue === '') {
                 alert("You must write something!");
             } else {
@@ -40,6 +40,7 @@
 
               http.onreadystatechange = function(response) {
                   if (http.readyState == 4 && http.status == 200) {
+                      document.getElementById("myUL").innerHTML = "";
                       jsonOptions = JSON.parse(http.responseText);
                       jsonOptions.reverse().forEach(function(elem){
                         var li = document.createElement("li");
