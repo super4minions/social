@@ -21,7 +21,7 @@ function db(input, cb) {
                     console.log('errorSelect', errorSelect);
                 }
               });
-            client.query(`INSERT INTO posts (post_contents)values (\' ${input}'\ );`, function(errorSelect, result) {
+            client.query(`INSERT INTO posts (post_contents)values (\'${input}'\ );`, function(errorSelect, result) {
                 //console.log("result", result);
 
                 if (errorSelect) {

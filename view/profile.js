@@ -30,13 +30,14 @@
 // Create a new list item when clicking on the "Add" button
   var http = new XMLHttpRequest();
   function newElement() {
-  var inputValue = document.getElementById("myInput").value;
-  http.open("POST", "/posts", true);
-  http.send(inputValue);
-
+    var inputValue = document.getElementById("myInput").value;
+    console.log(inputValue);
             if (inputValue === '') {
                 alert("You must write something!");
             } else {
+              http.open("POST", "/posts", true);
+              http.send(inputValue);
+
               http.onreadystatechange = function(response) {
                   if (http.readyState == 4 && http.status == 200) {
                       jsonOptions = JSON.parse(http.responseText);
