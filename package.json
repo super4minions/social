@@ -1,12 +1,12 @@
 {
   "name": "social",
   "version": "1.0.0",
-  "description": "",
+  "description": "[![Code Climate](https://codeclimate.com/github/super4minions/social/badges/gpa.svg)](https://codeclimate.com/github/super4minions/social) [![Test Coverage](https://codeclimate.com/github/super4minions/social/badges/coverage.svg)](https://codeclimate.com/github/super4minions/social/coverage) [![Build Status](https://travis-ci.org/super4minions/social.svg?branch=master)](https://travis-ci.org/super4minions/social)",
   "main": "index.js",
   "scripts": {
     "test": "node tests/test.js",
     "start": "node server.js",
-    "cov" : "./node_modules/.bin/istanbul cover tests/test.js"
+    "cov": "istanbul cover tests/test.js"
   },
   "repository": {
     "type": "git",
@@ -25,6 +25,10 @@
     "tape": "^4.6.3"
   },
   "dependencies": {
-    "codeclimate-test-reporter": "^0.4.1"
+    "codeclimate-test-reporter": "^0.4.1",
+    "pg": "^6.1.2"
+  },
+  "directories": {
+    "test": "tests"
   }
 }
