@@ -42,10 +42,15 @@ function newElement() {
               http.onreadystatechange = function(response) {
                   if (http.readyState == 4 && http.status == 200) {
                       jsonOptions = JSON.parse(http.responseText);
-                      console.log("jsonOptions", jsonOptions);
-                      var t = document.createTextNode(jsonOptions);
+
+                    //  console.log("jsonOptions", jsonOptions[0].post_contents);
+                    var reverse = jsonOptions.reverse();
+                    reverse.forEach(function (item) {
+                      var t = document.createTextNode(item.post_contents);
                       li.appendChild(t);
                       document.getElementById("myUL").appendChild(li);
+                    });
+
               }
             }
             }
