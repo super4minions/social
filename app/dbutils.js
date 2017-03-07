@@ -63,24 +63,37 @@ module.exports = {
 //       });
 //   });
 // }
-// function createTable(config,cb){
-//   dbconnection(config, function(err, client3) {
-//     client3.query(`CREATE TABLE IF NOT EXISTS users (
-//       ID SERIAL,
-//       first_name varchar(64),
-//       last_name varchar(64),
-//       email varchar(64),
-//       password varchar(64));`,function (errCreate) {
-//         cb(undefined);
-//       client3.end(function(errEnd) {
-//           // if (errEnd) {
-//           //     console.log('errEnd', errEnd);
-//           // }
-//       });
-//     });
-//   });
-//
-// }
+var config = {
+    user: 'rtcjczljxqkups', //env var: PGUSER
+    database: 'dcbodnehnplqbi', //env var: PGDATABASE
+    password: '01df6173ba790b17d804b54936b6f7c161b4a2617940bfa3fd67f469fcc594d9', //env var: PGPASSWORD
+    host: 'ec2-54-83-205-71.compute-1.amazonaws.com', // Server hosting the postgres database
+    port: 5432, //env var: PGPORT
+    max: 10, // max number of clients in the pool
+    idleTimeoutMillis: 30000,
+    SSL : true// how long a client is allowed to remain idle before being closed
+};
+function createTable(config,cb){
+  dbconnection(config, function(err, client3) {
+    client3.query(`CREATE TABLE IF NOT EXISTS users (
+      ID SERIAL,
+      first_name varchar(64),
+      last_name varchar(64),
+      email varchar(64),
+      password varchar(64));`,function (errCreate) {
+        cb(undefined);
+      client3.end(function(errEnd) {
+          // if (errEnd) {
+          //     console.log('errEnd', errEnd);
+          // }
+      });
+    });
+  });
+
+}
+createTable(config,function (err) {
+
+})
 
 
 
