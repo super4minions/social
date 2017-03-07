@@ -5,7 +5,7 @@ function newElement() {
           if (inputValue === '') {
               alert("You must write something!");
           } else {
-            http.open("POST", "https://git.heroku.com/social-project.git/posts", true);
+            http.open("POST", "https://social-project.herokuapp.com/posts", true);
             http.send(inputValue);
 
             http.onreadystatechange = function(response) {
