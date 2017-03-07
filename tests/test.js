@@ -13,7 +13,7 @@ test('POST /posts: should insert the input to DB and return table content', func
     return item.post_contents ==='Just For Test'
     })
     console.log("validation",validation);
-t.equal(validation.post_contents ==='Just For Test', true,'insert the input and return all table content correctly');
+t.notEqual(validation,undefined ,'insert the input and return all table content correctly');
       t.end();
     });
 });
@@ -76,7 +76,8 @@ test("when DB name is not correct, should make error in connection with DB",func
       idleTimeoutMillis: 30000, // how long a client is allowed to remain idle before being closed
   };
  dbutils.dbconnection(config,function(err,data){
+   t.end();
  });
 
-  t.end()
+
 });

@@ -6,7 +6,6 @@ function parseBody(req, callback) {
         body += data;
     });
     req.on('end', function() {
-      console.log("typeof(body)",typeof(body));
         callback(undefined, body);
     });
 }
