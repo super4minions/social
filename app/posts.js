@@ -8,7 +8,7 @@ var config = {
     port: 5432, //env var: PGPORT
     max: 10, // max number of clients in the pool
     idleTimeoutMillis: 30000,
-    SSL : true// how long a client is allowed to remain idle before being closed
+    ssl: true// how long a client is allowed to remain idle before being closed
 };
 module.exports = function (req, res) {
     utils.parseBody(req, function(err, data) {
