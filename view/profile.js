@@ -1,4 +1,3 @@
- Create a new list item when clicking on the "Add" button
 var http = new XMLHttpRequest();
 function newElement() {
   var inputValue = document.getElementById("myInput").value;
