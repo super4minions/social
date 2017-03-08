@@ -8,6 +8,4 @@ module.exports = {
     "GET /userprofile" : require('./app/userprofile.js'),
     "GET /signuperror" : require('./app/signuperror.js'),
     "POST /displayposts" : require('./app/displayposts.js')
-
-
 }

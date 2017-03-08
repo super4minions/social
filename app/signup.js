@@ -7,8 +7,8 @@ var fileContents = fs.readFileSync('./view/profile.html', {
 var client = dbutils.dbconnection;
 module.exports = function(req, res) {
     utitls1.parseBody(req, function(err, body) {
+
         dbutils.selectFromDB(body.email, "users", client, function(err, result) {
-            console.log('result', result);
             if (result > 0) {
                 res.writeHead(302, {
                     'Location': '/signuperror'
@@ -22,7 +22,6 @@ module.exports = function(req, res) {
                 });
                 res.end();
             }
-            console.log(JSON.stringify(result));
         })
     })
 }
