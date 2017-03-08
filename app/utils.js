@@ -1,5 +1,6 @@
 var qs = require('querystring');
-
+const fs = require('fs');
+var fileContents = fs.readFileSync('./view/profile.html', {encoding: 'utf8'});
 function parseBody(req, callback) {
     var body = '';
     req.on('data', function(data) {
@@ -9,6 +10,21 @@ function parseBody(req, callback) {
         callback(undefined, qs.parse(body));
     });
 }
-module.exports = {
-    parseBody: parseBody
+function replace(tpl, data) {
+
+  Object.keys(data).forEach(function(key) {
+    tpl = tpl.replace("{{"+key+"}}", data[key]);
+  });
+  return tpl;
 }
+module.exports = {
+    parseBody: parseBody,
+    replace:replace
+}
+
+
+// console.log(replace(fileContents, {
+//   name: 'Hello GSG'
+//
+// })
+// );

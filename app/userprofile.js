@@ -1,5 +1,8 @@
 var fs = require('fs');
-var userprofile = fs.readFileSync('./view/profile.html', {encoding: 'utf8'});
-module.exports=function(req,res){
-res.end(userprofile);
+var fileContents = fs.readFileSync('./view/profile.html', {
+    encoding: 'utf8'
+});
+var utils = require('../app/utils.js')
+module.exports = function(req, res) {
+        res.end(fileContents)
 }

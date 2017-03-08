@@ -1,6 +1,7 @@
 var fs = require('fs');
 var utitls1 = require('../app/utils.js')
 var dbutils = require('../app/dbutils.js')
+var userprofile;
 var fileContents = fs.readFileSync('./view/profile.html', {
     encoding: 'utf8'
 });
