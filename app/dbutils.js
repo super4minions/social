@@ -1,9 +1,9 @@
 'use strict';
 var pg = require('pg');
-var config = {
+var client = {
   // user: 'postgres', //env var: PGUSER
   // database: 'facebook', //env var: PGDATABASE
-  // password: '123456', //env var: PGPASSWORD
+  // password: '123654', //env var: PGPASSWORD
   // host: 'localhost', // Server hosting the postgres database
   // port: 5432, //env var: PGPORT
   // max: 10, // max number of clients in the pool
@@ -19,100 +19,62 @@ var config = {
     idleTimeoutMillis: 30000,
     ssl: true// how long a client is allowed to remain idle before being closed
 };
-function dbconnection(config, cb) {
-
-    var client = new pg.Client(config);
+function dbconnection(client, cb) {
+    var client = new pg.Client(client);
     client.connect(function(err) {
         if (err) {
               console.log("Error conection", err);
               cb(err,undefined);
               return;
         }
-        cb(undefined, client);
     });
+      return client;
 }
-function insertToPostsTable(input, config, cb) {
-    dbconnection(config, function(err, client1) {
-        client1.query(`INSERT INTO posts (post_contents)values (\'${input}\');`, function(errorSelect, result) {
+function insertToPostsTable(input, client, cb) {
+        client.query(`INSERT INTO posts (post_contents)values (\'${input}\');`, function(errorSelect, result) {
             cb(undefined)
-            // if (errorSelect) {
-            //     console.log('errorSelect', errorSelect);
-            // }
-            client1.end(function(errEnd) {
-                // if (errEnd) {
-                //     console.log('errEnd', errEnd);
-                // }
-            });
-        });
+            if (errorSelect) {
+                console.log('errorSelect', errorSelect);
+            }
     });
 }
 
-function selectallposts(config, cb) {
-    dbconnection(config, function(err, client2) {
-        client2.query('SELECT * from posts;', function(errorSelect, result) {
+function selectallposts(client, cb) {
+        client.query('SELECT * from posts;', function(errorSelect, result) {
             cb(undefined, result.rows)
-            // if (errorSelect) {
-            //     console.log('errorSelect', errorSelect);
-            // }
-            client2.end(function(errEnd) {
-                // if (errEnd) {
-                //     console.log('errEnd', errEnd);
-                // }
-            });
-        });
+            if (errorSelect) {
+                console.log('errorSelect', errorSelect);
+            }
     });
 }
 
-
-function selectFromDB(user_email,table_name, config, cb) {
-    dbconnection(config, function(err, client2) {
-        client2.query(`SELECT email from ${table_name} where email = \'${user_email}\'; `, function(errorSelect, result) {
+function selectFromDB(user_email,table_name, client, cb) {
+        client.query(`SELECT email from ${table_name} where email = \'${user_email}\'; `, function(errorSelect, result) {
             cb(undefined, result.rowCount)
-            // if (errorSelect) {
-            //     console.log('errorSelect', errorSelect);
-            // }
-            client2.end(function(errEnd) {
-                // if (errEnd) {
-                //     console.log('errEnd', errEnd);
-                // }
-            });
-        });
+            if (errorSelect) {
+                console.log('errorSelect', errorSelect);
+            }
+
     });
 }
-function validation(input,table_name, config, cb) {
-    dbconnection(config, function(err, client2) {
-        client2.query(`SELECT *  from ${table_name} where email = \'${input.email}\' AND password  = \'${input.password}\'; `, function(errorSelect, result) {
+function validation(input,table_name, client, cb) {
+        client.query(`SELECT *  from ${table_name} where email = \'${input.email}\' AND password  = \'${input.password}\'; `, function(errorSelect, result) {
             cb(undefined, result.rowCount)
-            // if (errorSelect) {
-            //     console.log('errorSelect', errorSelect);
-            // }
-            client2.end(function(errEnd) {
-                // if (errEnd) {
-                //     console.log('errEnd', errEnd);
-                // }
-            });
-        });
+            if (errorSelect) {
+                console.log('errorSelect', errorSelect);
+            }
     });
 }
 
-
-function insertToUsersTable(input, config, cb){
-  dbconnection(config, function(err, client1) {
-      client1.query(`INSERT INTO users (first_name,last_name,email,password)values (\'${input.firstname}\',\'${input.lastname}\',\'${input.email}\',\'${input.password}\');`, function(errorSelect, result) {
+function insertToUsersTable(input, client, cb){
+      client.query(`INSERT INTO users (first_name,last_name,email,password)values (\'${input.firstname}\',\'${input.lastname}\',\'${input.email}\',\'${input.password}\');`, function(errorSelect, result) {
           cb(undefined)
-          // if (errorSelect) {
-          //     console.log('errorSelect', errorSelect);
-          // }
-          client1.end(function(errEnd) {
-              // if (errEnd) {
-              //     console.log('errEnd', errEnd);
-              // }
-          });
-      });
+          if (errorSelect) {
+              console.log('errorSelect', errorSelect);
+          }
+
   });
 }
-
-
 
 module.exports = {
     insertToPostsTable : insertToPostsTable,
@@ -120,12 +82,14 @@ module.exports = {
     dbconnection : dbconnection,
     insertToUsersTable : insertToUsersTable,
     validation:validation,
-    selectallposts:selectallposts
+    selectallposts:selectallposts,
+    dbconnection: dbconnection(client, function(err) {
+    })
 
 }
-// function createTable(config,cb){
+// function createTable(client,cb){
 //   console.log();
-//   dbconnection(config, function(err, client3) {
+//   dbconnection(client, function(err, client3) {
 //     client3.query(`CREATE TABLE IF NOT EXISTS posts (
 //       ID SERIAL,
 //       post_contents varchar(64),
@@ -142,8 +106,8 @@ module.exports = {
 //   });
 //
 // }
-// function createTable(config,cb){
-//   dbconnection(config, function(err, client3) {
+// function createTable(client,cb){
+//   dbconnection(client, function(err, client3) {
 //     client3.query(`CREATE TABLE IF NOT EXISTS users (
 //       ID SERIAL PRIMARY KEY,
 //       first_name varchar(64),
@@ -160,6 +124,6 @@ module.exports = {
 //   });
 //
 // }
-// createTable(config,function (err) {
+// createTable(client,function (err) {
 
 // })
