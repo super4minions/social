@@ -131,7 +131,7 @@ input {
 }
 
 
-/**, *:before, *:after {
+*, *:before, *:after {
   box-sizing: border-box;
 }
 
@@ -308,4 +308,4 @@ textarea {
 .forgot {
   margin-top: -20px;
   text-align: right;
-}*/
+}

@@ -20,14 +20,8 @@ var config = {
     ssl: true// how long a client is allowed to remain idle before being closed
 };
 module.exports = function (req, res) {
-          utils.parseBody(req, function(err, data) {
-            console.log('data',data);
-            dbutils.insertToPostsTable(Object.keys(data)[0], config, function(err){
-            //   dbutils.selectallposts(config, function(err, result) {
-            //     res.end(JSON.stringify(result));
-            //     });
-            // });
-            res.end();
-    });
-  });
+
+              dbutils.selectallposts(config, function(err, result) {
+                res.end(JSON.stringify(result));
+                });
 }
