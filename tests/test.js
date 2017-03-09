@@ -63,7 +63,8 @@ test('POST /posts: should insert the input to DB ', function(t) {
     shot.inject(handler, {
         method: 'POST',
         url: '/posts',
-        payload: 'Just For Test'
+        payload: 'Just For Test',
+        headers: {cookie: token='+body.firstname'}
     }, function(res) {
         t.equal(res.statusCode, 200, "get status code correctly");
         t.end()
