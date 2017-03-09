@@ -28,6 +28,9 @@
 ### Setup and install 
 ##### For anyone wants to use the website locally :
 - [ ] You should install this library 
+```js
+$ npm clone https://github.com/super4minions/social.git
+```
 - [ ] You should download the data base on your device like postgres data base
 - [ ] You should add data base config (username, database name, and password)
 - [ ] Then you should Execute the code by ( npm start ) command
