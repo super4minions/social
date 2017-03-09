@@ -4,10 +4,10 @@ var client = dbutils.dbconnection;
 module.exports = function(req, res) {
     utitls1.parseBody(req, function(err, body) {
         dbutils.validation(body, "users", client, function(err, result) {
-            console.log('body', body);
             if (result > 0) {
                 res.writeHead(302, {
-                    'Location': '/userprofile'
+                    'Location': '/userprofile',
+                    'Set-Cookie': 'token='+body.email
                 });
                 res.end();
             } else {

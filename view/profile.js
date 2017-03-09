@@ -24,7 +24,7 @@ function refreshposts() {
             jsonOptions = JSON.parse(http.responseText);
             jsonOptions.reverse().forEach(function(elem) {
                 var li = document.createElement("li");
-                var t = document.createTextNode(elem.post_contents);
+                var t = document.createTextNode(elem.email+": "+elem.post_contents);
                 li.appendChild(t);
                 document.getElementById("myUL").appendChild(li);
             });
