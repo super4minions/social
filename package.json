@@ -27,6 +27,7 @@
   },
   "dependencies": {
     "codeclimate-test-reporter": "^0.4.1",
+    "nodemon": "^1.11.0",
     "pg": "^6.1.2"
   },
   "directories": {
