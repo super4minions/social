@@ -23,4 +23,13 @@
 
 ### We used TDD for testing functions in code
 
-The website on Heroku : https://social-project.herokuapp.com/
+### Setup and install 
+##### For anyone wants to use the website locally :
+[-] You should install this library 
+[-] You should download the data base on your device like postgres data base
+[-] You should add data base config (username, database name, and password)
+[-] Then you should Execute the code by ( npm start ) command
+
+##### If you want to use the website globally, you need to create global database like create data base on heroku website, then add the data base config ( username, data base name, password, host ,port ..) in the code
+
+###### The website on Heroku : https://social-project.herokuapp.com/
