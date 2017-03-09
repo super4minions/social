@@ -58,18 +58,19 @@ test('POST /login: if the user insert UNCORRECT email or password ,should stay i
     });
 });
 
-// test('POST /posts: should insert the input to DB ', function(t) {
-//     var validation
-//     shot.inject(handler, {
-//         method: 'POST',
-//         url: '/posts',
-//         payload: 'Just For Test'
-//     }, function(res) {
-//         t.equal(res.statusCode, 200, "get status code correctly");
-//         t.end()
-//
-//     });
-// });
+test('POST /posts: should insert the input to DB ', function(t) {
+    var validation
+    shot.inject(handler, {
+        method: 'POST',
+        url: '/posts',
+        payload: 'Just For Test',
+        headers: {cookie: token='+body.firstname'}
+    }, function(res) {
+        t.equal(res.statusCode, 200, "get status code correctly");
+        t.end()
+
+    });
+});
 test('POST /displayposts: should display posts table contents', function(t) {
     var validation
     shot.inject(handler, {
