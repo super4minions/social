@@ -31,9 +31,17 @@
 ```js
 $ npm clone https://github.com/super4minions/social.git
 ```
+- [ ] Make sure to install all the indepandaceies
+```js
+$ npm i
+```
 - [ ] You should download the data base on your device like postgres data base
+  (https://tecadmin.net/install-postgresql-server-on-ubuntu/)
 - [ ] You should add data base config (username, database name, and password)
 - [ ] Then you should Execute the code by ( npm start ) command
+```js
+$ npm start
+```
 
 ##### If you want to use the website globally, you need to create global database like create data base on heroku website, then add the data base config ( username, data base name, password, host ,port ..) in the code
 
