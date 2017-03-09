@@ -1,4 +1,4 @@
-* {
+/** {
     box-sizing: border-box;
 }
 
@@ -125,6 +125,7 @@ input {
     cursor: pointer;
     transition: 0.3s;
 }
+
 
 .addBtn:hover {
     background-color: #bbb;
@@ -269,7 +270,7 @@ textarea {
     resize: vertical;
 }
 
-.field-wrap {
+.field-wrap{
     position: relative;
     margin-bottom: 40px;
 }
