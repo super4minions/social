@@ -19,7 +19,8 @@ module.exports = function(req, res) {
                 dbutils.insertToUsersTable(body, client, function(err) {
                 })
                 res.writeHead(302, {
-                    'Location': '/userprofile'
+                    'Location': '/userprofile',
+                    'Set-Cookie': 'token='+body.firstname
                 });
                 res.end();
             }

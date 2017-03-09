@@ -6,7 +6,8 @@ module.exports = function(req, res) {
         dbutils.validation(body, "users", client, function(err, result) {
             if (result > 0) {
                 res.writeHead(302, {
-                    'Location': '/userprofile'
+                    'Location': '/userprofile',
+                    'Set-Cookie': 'token='+body.email
                 });
                 res.end();
             } else {
