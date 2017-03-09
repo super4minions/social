@@ -32,7 +32,7 @@ function insertToPostsTable(input, token, client, cb) {
 }
 
 function selectallposts(client, cb) {
-    client.query('SELECT posts.post_contents, users.first_name from posts INNER JOIN users ON posts.user_id = user.id;', function(errorSelect, result) {
+    client.query('SELECT * FROM posts;', function(errorSelect, result) {
         if (errorSelect) {
             cb(errorSelect, undefined)
         }
