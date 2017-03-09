@@ -11,20 +11,8 @@ function parseBody(req, callback) {
     });
 }
 function replace(tpl, data) {
-
-  Object.keys(data).forEach(function(key) {
-    tpl = tpl.replace("{{"+key+"}}", data[key]);
-  });
-  return tpl;
 }
 module.exports = {
     parseBody: parseBody,
-    replace:replace
+
 }
-
-
-// console.log(replace(fileContents, {
-//   name: 'Hello GSG'
-//
-// })
-// );
